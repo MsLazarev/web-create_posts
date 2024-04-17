@@ -31,13 +31,14 @@ def make_db():
     id INTEGER PRIMARY KEY,
     head VARCHAR,
     describe VARCHAR);"""
+    #topic VARCHAR);"""
     
     do(posts_db)
 
-    # start_post = [('Привет', 'это пост о там то то та тока тока')]
+    # start_post = [('Привет', 'это пост о там то то та тока тока', 'Криптовалюта')]
     # cursor.executemany("""INSERT INTO posts
-    #                    (head, describe)
-    #                    VALUES (?, ?)""", start_post)
+    #                    (head, describe, topic)
+    #                    VALUES (?, ?, ?)""", start_post)
     # do(posts_db)
     close()
 
@@ -48,9 +49,10 @@ def get_post():
     close()
     return posts_list
 
-def put_post(head, body):
+def put_post(head, body):#, topic):
     open()
     put_list = [(head, body)]
+    #put_list = [(head, body, topic)]
     cursor.executemany("""INSERT INTO posts
                        (head, describe)
                        VALUES (?, ?)""", put_list)
