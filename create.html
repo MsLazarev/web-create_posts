@@ -9,6 +9,12 @@
     <form method="POST" action="create">
         <h2>Заголовок поста:</h2>
         <input type="text" name="headshot">
+        <h2>На какую тему пост:</h2>
+        <select class="select_list" name="topicshot" size="1">
+            {% for id, topic in topic_list %}
+                <option id="{{id}}" class="select_elements" value="{{topic}}">{{topic}}</option>
+            {% endfor %}
+        </select>
 
         <h2>Содержание поста:</h2>
 

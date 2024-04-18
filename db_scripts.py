@@ -30,8 +30,8 @@ def make_db():
     posts_db = """CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY,
     head VARCHAR,
-    describe VARCHAR);"""
-    #topic VARCHAR);"""
+    describe VARCHAR,
+    topic VARCHAR);"""
     
     do(posts_db)
 
@@ -49,17 +49,16 @@ def get_post():
     close()
     return posts_list
 
-def put_post(head, body):#, topic):
+def put_post(head, body, topic):
     open()
-    put_list = [(head, body)]
-    #put_list = [(head, body, topic)]
+    put_list = [(head, body, topic)]
     cursor.executemany("""INSERT INTO posts
-                       (head, describe)
-                       VALUES (?, ?)""", put_list)
+                       (head, describe, topic)
+                       VALUES (?, ?, ?)""", put_list)
     conn.commit()
     close()
 
 
 def main():
-    #clear_db()
+    clear_db()
     make_db()

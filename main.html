@@ -11,6 +11,10 @@
     <meta http-equiv="expires" content="0">
 </head>
 <body>
+    <!-- <ul>
+        <form method="" action="/"></form>
+        <li></li>
+    </ul> -->
     <form method="POST" action="/">
         <input class="change_topic" type="submit" name="topic" value="">   
     </form>
@@ -21,8 +25,12 @@
     <div>
         {% for i in post_list %}
         <div class="blok_post">
-            <h2 class="head_name">{{i[1]}}</h2>
+            <div class="head_topic">
+                <h2 class="head_name">{{i[1]}}</h2>
+                <!--<h2 class="topic_name">{{i[3]}}</h2>-->
+            </div>
             <p class="p_describe">{{i[2]}}</p>
+
         </div>
         {% endfor %}
     </div>

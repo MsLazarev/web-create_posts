@@ -31,14 +31,15 @@ def index():
     
 
 def create_page():
-    return render_template('create.html')
+    topic_list = [(1, "Криптовалюта"), (2, "Спорт"), (3, "Стримеры"), (4, "Музыка"), (5, "Киберспорт"), (6, "Политика")]
+    return render_template('create.html', topic_list = topic_list)
 
 def create():
     if request.method == 'POST':
         head_post = request.form.get('headshot')
         describe_post = request.form.get('describeshot')
-        #topic_post = request.form.get('topicshot')
-        put_post(head_post, describe_post)#, topic_post)
+        topic_post = request.form.get('topicshot')
+        put_post(head_post, describe_post, topic_post)
         post_list = get_post()
         print(post_list)
         return redirect(url_for('index'))
