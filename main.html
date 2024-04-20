@@ -11,10 +11,41 @@
     <meta http-equiv="expires" content="0">
 </head>
 <body>
-    <!-- <ul>
-        <form method="" action="/"></form>
-        <li></li>
-    </ul> -->
+
+    <!-- DARK-WHITE-TOPIC-OF-PAGE
+    <button id="themeToggle">Переключить тему</button>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            // Этот код будет выполняться при каждом клике на кнопку
+
+            // Получаем текущий класс, заданный для элемента body (текущую тему)
+            const currentTheme = document.body.className;
+
+            // Проверяем, является ли текущая тема светлой
+            if (currentTheme === 'light-theme') {
+                // Если да, меняем тему на темную
+                document.body.className = 'dark-theme';
+                document.div.className = 'dark-theme';
+            } else {
+                // Если текущая тема не светлая (или отсутствует), устанавливаем светлую тему
+                document.body.className = 'light-theme';
+            }
+        });
+    </script> -->
+
+
+    <ul>
+        <form method="POST" action="/">
+            <li><input type="submit" name="all_topic" value="Все категории"></li>
+            <li><input type="submit" name="crypto_topic" value="Криптовалюта"></li>
+            <li><input type="submit" name="sport_topic" value="Спорт"></li>
+            <li><input type="submit" name="srtimers_topic" value="Стримеры"></li>
+            <li><input type="submit" name="music_topic" value="Музыка"></li>
+            <li><input type="submit" name="cybersport_topic" value="Киберспорт"></li>
+            <li><input type="submit" name="politic_topic" value="Политика"></li>
+
+        </form>
+    </ul>
     <form method="POST" action="/">
         <input class="change_topic" type="submit" name="topic" value="">   
     </form>

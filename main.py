@@ -2,33 +2,84 @@ from flask import Flask, request, render_template, redirect, url_for, session
 from db_scripts import *
 import os
 
+categories_memory = [] #Память с последними нажатыми кнопками(категории для фильтров)
+
 def make_database():
     main()
 
-def main_page():
+def main_page(post_list):
     global cnt
-    post_list = get_post()
     
     #post_list[-1][-1].replace("\r\n", "<br>")
     #print(post_list[-1][-1])
     #print()
     return render_template('main.html', post_list=post_list, cnt=cnt)
+
+def topic_page():
+    post_list = []
+    if 'all_topic' in request.form:
+        categories_memory.append("Все_категории")
+        post_list = filter_all()
+    if 'crypto_topic' in request.form:
+        categories_memory.append("Криптовалюта")
+        post_list = filter_crypto()
+    if 'sport_topic' in request.form:
+        categories_memory.append("Спорт")
+        post_list = filter_sport()
+    if 'strimes_topic' in request.form:
+        categories_memory.append("Стримеры")
+        post_list = filter_streamers()
+    if 'music_topic' in request.form:
+        categories_memory.append("Музыка")
+        post_list = filter_music()
+    if 'cybersport_topic' in request.form:
+        categories_memory.append("Киберспорт")
+        post_list = filter_cybersport()
+    if 'politic_topic' in request.form:
+        categories_memory.append("Политика")
+        post_list = filter_politic()
+    return main_page(post_list)
+
 cnt = 0
 def index():
     global cnt
     if request.method == "GET":
-        return main_page()
+        post_list = get_post()
+        return main_page(post_list)
     
     if request.method == "POST":
         if 'create' in request.form:
             return redirect(url_for('create'))
+        
         if 'topic' in request.form:
             if cnt == 0:
                 cnt = 1
             else:
                 cnt = 0
-            return main_page()
+
+            # if categories_memory[-1] == 'Все_категории':
+            #     post_list = filter_all()
+            # elif categories_memory[-1] == 'Криптовалюта':
+            #     post_list = filter_crypto()
+            # elif categories_memory[-1] == 'Спорт':
+            #     post_list = filter_sport()
+            # elif categories_memory[-1] == 'Стримеры':
+            #     post_list = filter_streamers()
+            # elif categories_memory[-1] == 'Музыка':
+            #     post_list = filter_music()
+            # elif categories_memory[-1] == 'Политика':
+            #     post_list = filter_politic()
+            # elif categories_memory[-1] == 'Киберспорт':
+            #     post_list = filter_cybersport()
+            post_list = get_post()
+            return main_page(post_list)
+
+        
+        if 'create' not in request.form and 'topic' not in request.form:
+            return topic_page()
     
+
+
 
 def create_page():
     topic_list = [(1, "Криптовалюта"), (2, "Спорт"), (3, "Стримеры"), (4, "Музыка"), (5, "Киберспорт"), (6, "Политика")]

@@ -42,6 +42,60 @@ def make_db():
     # do(posts_db)
     close()
 
+#Все функции для фильтров бд
+
+def filter_all():
+    open()
+    cursor.execute("SELECT * FROM posts ORDER BY id")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+
+def filter_crypto():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Криптовалюта'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+def filter_sport():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Спорт'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+def filter_streamers():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Стримеры'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+def filter_music():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Музыка'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+def filter_cybersport():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Киберспорт'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+def filter_politic():
+    open()
+    cursor.execute("SELECT * FROM posts WHERE posts.topic == 'Политика'")
+    posts_list = cursor.fetchall()
+    close()
+    return posts_list
+
+#Конец всех функция для фильтров бд
+
 def get_post():
     open()
     cursor.execute("SELECT * FROM posts ORDER BY id")
@@ -60,5 +114,5 @@ def put_post(head, body, topic):
 
 
 def main():
-    clear_db()
+    #clear_db()
     make_db()
