@@ -26,7 +26,7 @@ def topic_page():
     if 'sport_topic' in request.form:
         categories_memory.append("Спорт")
         post_list = filter_sport()
-    if 'strimes_topic' in request.form:
+    if 'streamers_topic' in request.form:
         categories_memory.append("Стримеры")
         post_list = filter_streamers()
     if 'music_topic' in request.form:
@@ -57,21 +57,23 @@ def index():
             else:
                 cnt = 0
 
-            # if categories_memory[-1] == 'Все_категории':
-            #     post_list = filter_all()
-            # elif categories_memory[-1] == 'Криптовалюта':
-            #     post_list = filter_crypto()
-            # elif categories_memory[-1] == 'Спорт':
-            #     post_list = filter_sport()
-            # elif categories_memory[-1] == 'Стримеры':
-            #     post_list = filter_streamers()
-            # elif categories_memory[-1] == 'Музыка':
-            #     post_list = filter_music()
-            # elif categories_memory[-1] == 'Политика':
-            #     post_list = filter_politic()
-            # elif categories_memory[-1] == 'Киберспорт':
-            #     post_list = filter_cybersport()
-            post_list = get_post()
+            if len(categories_memory) == 0:
+                post_list = get_post()
+            elif categories_memory[-1] == 'Все_категории':
+                post_list = filter_all()
+            elif categories_memory[-1] == 'Криптовалюта':
+                post_list = filter_crypto()
+            elif categories_memory[-1] == 'Спорт':
+                post_list = filter_sport()
+            elif categories_memory[-1] == 'Стримеры':
+                post_list = filter_streamers()
+            elif categories_memory[-1] == 'Музыка':
+                post_list = filter_music()
+            elif categories_memory[-1] == 'Политика':
+                post_list = filter_politic()
+            elif categories_memory[-1] == 'Киберспорт':
+                post_list = filter_cybersport()
+
             return main_page(post_list)
 
         

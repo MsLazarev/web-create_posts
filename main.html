@@ -33,19 +33,25 @@
         });
     </script> -->
 
-
-    <ul>
-        <form method="POST" action="/">
-            <li><input type="submit" name="all_topic" value="Все категории"></li>
-            <li><input type="submit" name="crypto_topic" value="Криптовалюта"></li>
-            <li><input type="submit" name="sport_topic" value="Спорт"></li>
-            <li><input type="submit" name="srtimers_topic" value="Стримеры"></li>
-            <li><input type="submit" name="music_topic" value="Музыка"></li>
-            <li><input type="submit" name="cybersport_topic" value="Киберспорт"></li>
-            <li><input type="submit" name="politic_topic" value="Политика"></li>
-
-        </form>
-    </ul>
+    <div class="nav_bar">
+        <ul>
+            <form method="POST" action="/">
+                <li><input class="categoria" type="submit" name="all_topic" value="Все категории"></li>
+                <li><input onclick="changeColor(event)" class="categoria" type="submit" name="crypto_topic" value="Криптовалюта"></li>
+                <li><input class="categoria" type="submit" name="sport_topic" value="Спорт"></li>
+                <li><input class="categoria" type="submit" name="streamers_topic" value="Стримеры"></li>
+                <li><input class="categoria" type="submit" name="music_topic" value="Музыка"></li>
+                <li><input class="categoria" type="submit" name="cybersport_topic" value="Киберспорт"></li>
+                <li><input class="categoria" type="submit" name="politic_topic" value="Политика"></li>
+                <!-- <script>
+                    function changeColor(event) {
+                        var btn = event.target;
+                        btn.style.backgroundColor = 'red'
+                    }
+                </script> -->
+            </form>
+        </ul>
+    </div>
     <form method="POST" action="/">
         <input class="change_topic" type="submit" name="topic" value="">   
     </form>
